@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import java.util.ArrayList;
@@ -22,8 +23,8 @@ class MapTest {
     MapTest() throws Java_lab1.MyException {
     }
 
-    @Before
-    public void create() {
+    @BeforeEach
+    public void setUp() {
         m1 = mock(Map.class);
         m2 =  mock(Map.class);
         r = mock(Map.Relief.class);
@@ -47,6 +48,7 @@ class MapTest {
     @Test
     void createMap() {
         assertEquals(l, m.resultMap().listOfLocalities());
+        verify(m).resultMap().listOfLocalities();
     }
 
     @Test
@@ -61,15 +63,19 @@ class MapTest {
         m2.localities.add(new Locality("Vyshneve", "Village", 6));
         assertEquals(m1.localities.get(1), m1.findDuplicates());
         assertNull(m2.findDuplicates());
+        verify(m1).findDuplicates();
+        verify(m2).findDuplicates();
     }
 
     @Test
     void printMap() {
         assertFalse(m1.printMap());
+        verify(m1).printMap();
     }
 
     @Test
     void printAll() {
         assertEquals(r.printAll(), "Name of relief: " + "Lowland" + "\nMeasure of relief: 121");
+        verify(r).printAll();
     }
 }

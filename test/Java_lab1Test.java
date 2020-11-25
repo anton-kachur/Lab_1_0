@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import org.junit.Before;
@@ -13,8 +14,8 @@ class Java_lab1Test {
     private MapCreator new_map = new MapCreator();
     private App app = new App(new_map);
 
-    @Before
-    public void create() {
+    @BeforeEach
+    public void setUp() {
         new_map = mock(MapCreator.class);
         app = mock(App.class);
         when(app.makeMap(1)).thenReturn(app.createMap(new_map));
@@ -27,5 +28,7 @@ class Java_lab1Test {
         assert (app.makeMap(1));
         assertFalse (app.makeMap(3));
         assertFalse (app.makeMap(-3));
+        verify(app).makeMap(3);
+        verify(app).makeMap(-3);
         }
 }

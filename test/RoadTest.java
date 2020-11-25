@@ -1,4 +1,5 @@
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -11,14 +12,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class RoadTest {
     private Road test = new Road("Dirt", 1);
 
-    @Before
-    public void create(){
+    @BeforeEach
+    public void setUp() {
         test = mock(Road.class);
         when(test.printAll()).thenReturn("Road type: Dirt\nNumber of lanes: 1");
+
     }
 
     @Test
-    void test() {
+    void printAll() {
+
         assertEquals("Road type: Dirt\nNumber of lanes: 1", test.printAll());
+        verify(test).printAll();
     }
 }

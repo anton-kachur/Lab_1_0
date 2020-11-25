@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import org.junit.Before;
@@ -16,8 +17,8 @@ class CreatorTest {
         return mc.resultMap();
     }
 
-    @Before
-    public void create() {
+    @BeforeEach
+    public void setUp() {
         new_map = mock(MapCreator.class);
         app = mock(App.class);
         when(app.createMap(new_map)).thenAnswer(i->out_map(new_map));
@@ -29,5 +30,6 @@ class CreatorTest {
         System.out.println("What kind of map do you want?\n1->Random map;\n2->Custom map;\nYour choice: ");
 
         assert(app.createMap(new_map));
+        verify(app).createMap(new_map);
     }
 }

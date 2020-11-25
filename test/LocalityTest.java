@@ -1,4 +1,5 @@
 import org.junit.BeforeClass;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.plugins.MockMaker;
@@ -18,8 +19,8 @@ class LocalityTest {
 
     private Locality test = new Locality("Kyiv", "City", 13);
 
-    @Before
-    void create() {
+    @BeforeEach
+    public void setUp() {
         test = mock(Locality.class);
         when(test.getName()).thenReturn("Kyiv");
         when(test.printAll()).thenReturn("Name of locality: Kyiv\nType of locality: City");
@@ -30,16 +31,20 @@ class LocalityTest {
     @Test
     void getName() {
         assertEquals("Kyiv", test.getName());
+        verify(test).getName();
     }
 
     @Test
     void printAll() {
         assertEquals("Name of locality: Kyiv\nType of locality: City", test.printAll());
+        verify(test).printAll();
     }
 
     @Test
-    void testPrintAll() {
+    void boolPrintAll() {
         assertEquals("Name of locality: Kyiv\nType of locality: City", test.printAll(true));
         assertEquals("Name of locality: Kyiv\nType of locality: City\nName of building in locality: Default name13", test.printAll(false));
+        verify(test).printAll(true);
+        verify(test).printAll(false);
     }
 }
