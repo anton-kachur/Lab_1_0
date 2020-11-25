@@ -1,0 +1,27 @@
+<component name="libraryTable">
+  <library name="mockito-3.6">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23" />
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23/subprojects/android/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23/subprojects/deprecatedPluginsTest/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23/subprojects/errorprone/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23/subprojects/errorprone/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23/subprojects/extTest/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23/subprojects/inline/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23/subprojects/junit-jupiter/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23/subprojects/junit-jupiter/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23/subprojects/junitJupiterExtensionTest/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23/subprojects/junitJupiterInlineMockMakerExtensionTest/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23/subprojects/junitJupiterParallelTest/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23/subprojects/memory-test/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23/subprojects/module-test/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23/subprojects/osgi-test/src/otherBundle/java" />
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23/subprojects/osgi-test/src/testBundle/java" />
+      <root url="file://$PROJECT_DIR$/../mockito-3.6.23/subprojects/osgi-test/src/test/java" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,4 +1,4 @@
-class Locality extends Building
+public class Locality extends Building
 {
     String locality_name;
     private String locality_type;

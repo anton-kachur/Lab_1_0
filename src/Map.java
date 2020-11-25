@@ -24,8 +24,9 @@ class Map
             else name = Java_lab1.relief_types[4];
         }
 
-        void printAll() {
+        String printAll() {
             System.out.println("Name of relief: " + name + "\nMeasure of relief: " + height);
+            return "Name of relief: " + name + "\nMeasure of relief: " + height;
         }
 
     }

@@ -16,6 +16,7 @@ public class Java_lab1 {
             super(message);
             number = num;
         }
+
     }
 
     static String [] road_types = {"Dirt", "Asphalt", "Paving stone"};
