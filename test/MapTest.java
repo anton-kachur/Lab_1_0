@@ -96,6 +96,17 @@ class MapTest {
         assertEquals(result, m1.mapCondition());      
     }
     
+    @Test
+    void getMostPopular() {
+        Map m1 = new Map();
+        
+        m1.buildings.add(new Building("B1", "City", 12));
+        m1.buildings.add(new Building("B1", "City", 12));
+        m1.buildings.add(new Building("B2", "City", 56));
+
+        assertEquals("B1", m1.getMostPopular());
+    }
+    
     
     @Test
     void createMap() {
@@ -104,6 +115,7 @@ class MapTest {
         assertEquals(l, m.resultMap().listOfLocalities());
     }
     
+   
     
     @Test
     void printMap() {
