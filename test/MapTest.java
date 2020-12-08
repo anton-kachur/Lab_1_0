@@ -45,6 +45,7 @@ class MapTest {
         when(m1.maxOfReliefs()).thenReturn("Mountain 144444");
         when(m1.averageOfReliefs()).thenReturn(" 36580.25");
         doNothing().when(m1.mapCondition());
+        when(m1.getMostPopular()).thenReturn("B1");
         when(m2.findDuplicates()).thenReturn(null);
 
         when(r.printAll()).thenReturn("Name of relief: " + "Lowland" + "\nMeasure of relief: " + 121);
@@ -102,6 +103,16 @@ class MapTest {
         verify(m1).mapCondition();
     }
 
+    @Test
+    void getMostPopular() {
+        m1.buildings.add(new Building("B1", "City", 12));
+        m1.buildings.add(new Building("B1", "City", 12));
+        m1.buildings.add(new Building("B2", "City", 56));
+
+        assertEquals("B1", m1.getMostPopular());
+        verify(m1).getMostPopular();
+    }
+    
     @Test
     void findDuplicates() throws Java_lab1.MyException {
         m1.localities.add(new Locality("Kyiv", "City", 12));
