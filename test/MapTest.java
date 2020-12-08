@@ -3,6 +3,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,6 +41,10 @@ class MapTest {
         when(m2.printMap()).thenReturn(false);
         when(m2.printMap()).thenReturn(false);
         when(m1.localities.get(1)).thenReturn(m1.findDuplicates());
+        when(m1.sumOfReliefs()).thenReturn(146321);
+        when(m1.maxOfReliefs()).thenReturn("Mountain 144444");
+        when(m1.averageOfReliefs()).thenReturn(" 36580.25");
+        doNothing().when(m1.mapCondition());
         when(m2.findDuplicates()).thenReturn(null);
 
         when(r.printAll()).thenReturn("Name of relief: " + "Lowland" + "\nMeasure of relief: " + 121);
@@ -49,6 +56,50 @@ class MapTest {
     void createMap() {
         assertEquals(l, m.resultMap().listOfLocalities());
         verify(m).resultMap().listOfLocalities();
+    }
+
+    @Test
+    void sumOfReliefs() throws Java_lab1.MyException {
+        m1.reliefs.add(new Map.Relief(1212, "Plateau"));
+        m1.reliefs.add(new Map.Relief(144444, "Mountain"));
+        m1.reliefs.add(new Map.Relief(11, "Lowland"));
+        m1.reliefs.add(new Map.Relief(654, "Plateau"));
+
+        assertEquals(146321, m1.sumOfReliefs());
+        verify(m1).sumOfReliefs();
+    }
+
+    @Test
+    void maxOfReliefs() {
+        Map.Relief r = m1.reliefs.stream().max(Comparator.comparing(Map.Relief::getHeight)).orElseThrow(NoSuchElementException::new);
+
+        assertEquals("Mountain 144444", m1.maxOfReliefs());
+        verify(m1).maxOfReliefs();
+    }
+
+    @Test
+    void averageOfReliefs() {
+        assertEquals(36580.25, m1.reliefs.stream().mapToInt((x) -> x.getHeight()).summaryStatistics().getAverage());
+        verify(m1).averageOfReliefs();
+    }
+
+
+    @Test
+    void mapCondition() {
+        List<Map.Relief> result = m1.reliefs.stream().map(temp -> {
+            Map.Relief obj = new Map.Relief(temp.getHeight(), temp.getType());
+            if ("Mountain".equals(temp.getType())) {
+                obj.setMessage("High relief");
+            }
+            else {
+                obj.setMessage("Low relief");
+            }
+
+            return obj;
+        }).collect(Collectors.toList());
+
+        assertEquals(result, m1.mapCondition());
+        verify(m1).mapCondition();
     }
 
     @Test
