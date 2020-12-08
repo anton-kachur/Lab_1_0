@@ -122,6 +122,16 @@ class Map
     }
 
 
+    String getMostPopular() {
+        ArrayList<Building> b = new ArrayList<>();
+
+        for (int i=1; i<buildings.size(); i++) {
+            b.add(new Locality(buildings.get(i-1).getName_of_locality(), buildings.get(i-1).getName_of_building(), buildings.get(i-1).getNum_building()));
+        }
+
+        return b.stream().collect(Collectors.groupingBy(Building::getName_of_locality, Collectors.counting())).entrySet().stream().max(Comparator.comparing(java.util.Map.Entry::getValue)).get().getKey();
+
+    }
 
 
     private boolean equals(Map obj) {
@@ -160,6 +170,11 @@ class Map
             System.out.println(res.get(i).getHeight());
             System.out.println(res.get(i).getMessage());
         }
+
+        System.out.println("Most popular name: "+getMostPopular());
+
+
+
         return false;
     }
 }
