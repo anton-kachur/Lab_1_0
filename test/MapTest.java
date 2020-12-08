@@ -34,6 +34,77 @@ class MapTest {
         assertNull(m2.findDuplicates());
     }
 
+    
+    @Test
+    void sumOfReliefs() throws Java_lab1.MyException {
+        Map m1 = new Map();
+        
+        m1.reliefs.add(new Map.Relief(1212, "Plateau"));
+        m1.reliefs.add(new Map.Relief(144444, "Mountain"));
+        m1.reliefs.add(new Map.Relief(11, "Lowland"));
+        m1.reliefs.add(new Map.Relief(654, "Plateau"));
+
+        assertEquals(146321, m1.sumOfReliefs());
+    }
+
+    @Test
+    void maxOfReliefs() {
+        Map m1 = new Map();
+        
+        m1.reliefs.add(new Map.Relief(1212, "Plateau"));
+        m1.reliefs.add(new Map.Relief(144444, "Mountain"));
+        m1.reliefs.add(new Map.Relief(11, "Lowland"));
+        m1.reliefs.add(new Map.Relief(654, "Plateau"));
+        
+        assertEquals("Mountain 144444", m1.maxOfReliefs());
+    }
+
+    @Test
+    void averageOfReliefs() {
+        Map m1 = new Map();
+        
+        m1.reliefs.add(new Map.Relief(1212, "Plateau"));
+        m1.reliefs.add(new Map.Relief(144444, "Mountain"));
+        m1.reliefs.add(new Map.Relief(11, "Lowland"));
+        m1.reliefs.add(new Map.Relief(654, "Plateau"));
+        
+        assertEquals(36580.25, m1.averageOfReliefs());
+    }
+    
+    
+    @Test
+    void mapCondition() {
+        Map m1 = new Map();
+        
+        m1.reliefs.add(new Map.Relief(1212, "Plateau"));
+        m1.reliefs.add(new Map.Relief(144444, "Mountain"));
+        m1.reliefs.add(new Map.Relief(11, "Lowland"));
+        m1.reliefs.add(new Map.Relief(654, "Plateau"));
+        
+        List<Map.Relief> result = m1.reliefs.stream().map(temp -> {
+            Map.Relief obj = new Map.Relief(temp.getHeight(), temp.getType());
+            if ("Mountain".equals(temp.getType())) {
+                obj.setMessage("High relief");
+            }
+            else {
+                obj.setMessage("Low relief");
+            }
+
+            return obj;
+        }).collect(Collectors.toList());
+
+        assertEquals(result, m1.mapCondition());      
+    }
+    
+    
+    @Test
+    void createMap() {
+        MapCreator m = new MapCreator();
+        ArrayList l = m.setLocalities(6, false);
+        assertEquals(l, m.resultMap().listOfLocalities());
+    }
+    
+    
     @Test
     void printMap() {
         Map m1 = new Map();
