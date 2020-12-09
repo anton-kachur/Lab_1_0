@@ -76,35 +76,6 @@ class Map
         return localities;
     }
 
-    Integer sumOfReliefs() {
-        return reliefs.stream().mapToInt(x -> x.getHeight()).sum();
-    }
-
-    String maxOfReliefs() {
-        Relief r = reliefs.stream().max(Comparator.comparing(Relief::getHeight)).orElseThrow(NoSuchElementException::new);
-        return r.getType() + " " + r.getHeight();
-    }
-
-    String averageOfReliefs() {
-        return " " + reliefs.stream().mapToInt((x) -> x.getHeight()).summaryStatistics().getAverage();
-    }
-
-    List<Relief> mapCondition() {
-        List<Relief> result = reliefs.stream().map(temp -> {
-            Relief obj = new Relief(temp.getHeight(), temp.getType());
-            if ("Mountain".equals(temp.getType())) {
-                obj.setMessage("High relief");
-            }
-            else {
-                obj.setMessage("Low relief");
-            }
-
-            return obj;
-        }).collect(Collectors.toList());
-
-        return result;
-    }
-
 
     Locality findDuplicates() {
         if (localities.size() < 1) {
@@ -120,21 +91,6 @@ class Map
         }
         return null;
     }
-
-
-
-
-    String getMostPopular() {
-        ArrayList<Building> b = new ArrayList<>();
-
-        for (int i=1; i<buildings.size(); i++) {
-            b.add(new Locality(buildings.get(i-1).getName_of_locality(), buildings.get(i-1).getName_of_building(), buildings.get(i-1).getNum_building()));
-        }
-
-        return b.stream().collect(Collectors.groupingBy(Building::getName_of_locality, Collectors.counting())).entrySet().stream().max(Comparator.comparing(java.util.Map.Entry::getValue)).get().getKey();
-
-    }
-
 
     private boolean equals(Map obj) {
         return obj==null;
@@ -158,23 +114,6 @@ class Map
         for (Trees i : trees) i.printAll();
         for (Relief i : reliefs) i.printAll();
         System.out.println("Map scale: "+scale+" Timezone: "+timezone);
-
-
-        System.out.println("Sum of reliefs: "+sumOfReliefs());
-        System.out.println("Max of reliefs: "+maxOfReliefs());
-        System.out.println("Average of reliefs: "+averageOfReliefs());
-        System.out.println("Map with conditions: ");
-
-        List<Relief> res = mapCondition();
-
-        for (int i = 0; i<res.size(); i++) {
-            System.out.println(res.get(i).getType());
-            System.out.println(res.get(i).getHeight());
-            System.out.println(res.get(i).getMessage());
-        }
-
-        System.out.println("Most popular name: "+getMostPopular());
-
 
 
         return false;
