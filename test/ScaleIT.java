@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -18,7 +19,7 @@ class ScaleIT {
 
     @BeforeEach
     public void setUp() {
-        test = Mockito.spy(Scale.class);
+        test = Mockito.mock(Scale.class);
         when(test.setTimeZone(1)).thenReturn("Timezone: +1");
         when(test.setTimeZone(-2)).thenReturn("Timezone: -2");
     }

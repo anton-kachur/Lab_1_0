@@ -34,10 +34,8 @@ class CreatorIT {
 
     @Test
     void createMap() {
-
         System.out.println("What kind of map do you want?\n1->Random map;\n2->Custom map;\nYour choice: ");
-
-        assertFalse(app1.createMap(new_map1));
-        verify(app1).createMap(new_map1);
+        assertTrue(app1.createMap(new_map));
+        verify(app1).createMap(new_map);
     }
 }

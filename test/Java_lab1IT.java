@@ -31,7 +31,7 @@ class Java_lab1IT {
 
     @Test
     void main() {
-        assert (app1.makeMap(1));
+        assertTrue (app1.makeMap(1));
         assertFalse (app1.makeMap(3));
         assertFalse (app1.makeMap(-3));
         verify(app1).makeMap(3);
